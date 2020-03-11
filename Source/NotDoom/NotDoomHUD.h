@@ -14,12 +14,15 @@ class ANotDoomHUD : public AHUD
 public:
 	ANotDoomHUD();
 
+    UPROPERTY(EditAnywhere, Category = Camera)
+    class UTexture2D* CrosshairTex;
+
 	/** Primary draw call for the HUD */
+    UFUNCTION()
 	virtual void DrawHUD() override;
 
 private:
 	/** Crosshair asset pointer */
-	class UTexture2D* CrosshairTex;
 
 };
 
