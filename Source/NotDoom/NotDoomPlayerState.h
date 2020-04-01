@@ -22,6 +22,9 @@ public:
         TArray<float> WeaponAmmoArray;
 
     UPROPERTY(EditAnywhere)
+        TArray<float> WeaponMaxAmmoArray;
+
+    UPROPERTY(EditAnywhere)
         int CurrentWeapon;
 
     UPROPERTY(EditAnywhere)
@@ -46,4 +49,16 @@ public:
     
     UFUNCTION(BlueprintCallable)
         void SetCurrentAmmo(int index, float newValue);
+    
+    UFUNCTION(BlueprintCallable)
+        void SetMaxAmmo(int index, float newValue);
+
+    UFUNCTION(BlueprintCallable)
+        float GetMaxAmmo(int index);
+
+    UFUNCTION(BlueprintCallable)
+        void NextWeapon();
+
+    UFUNCTION(BlueprintCallable)
+        void PrevWeapon();
 };

@@ -5,34 +5,59 @@
 
 ANotDoomPlayerState::ANotDoomPlayerState()
 {
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 5; i++)
     {
         UnlockedWeaponsArray.Add(true);
     }
 
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 5; i++)
     {
         switch (i)
         {
         case(0): //SemiAuto
-            WeaponAmmoArray.Add(150);
+            WeaponAmmoArray.Add(15);
             break;
         case(1): //Shotgun
-            WeaponAmmoArray.Add(50);
+            WeaponAmmoArray.Add(25);
             break;
         case(2): //Rifle
-            WeaponAmmoArray.Add(150);
+            WeaponAmmoArray.Add(95);
             break;
         case(3): //Charge Gun
-            WeaponAmmoArray.Add(100);
+            WeaponAmmoArray.Add(50);
             break;
         case(4): //GatlingGun
-            WeaponAmmoArray.Add(150);
+            WeaponAmmoArray.Add(95);
             break;
         default:
             WeaponAmmoArray.Add(true);
             break;
         }     
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        switch (i)
+        {
+        case(0): //SemiAuto
+            WeaponMaxAmmoArray.Add(200);
+            break;
+        case(1): //Shotgun
+            WeaponMaxAmmoArray.Add(60);
+            break;
+        case(2): //Rifle
+            WeaponMaxAmmoArray.Add(150);
+            break;
+        case(3): //Charge Gun
+            WeaponMaxAmmoArray.Add(50);
+            break;
+        case(4): //GatlingGun
+            WeaponMaxAmmoArray.Add(150);
+            break;
+        default:
+            WeaponAmmoArray.Add(true);
+            break;
+        }
     }
 }
 
@@ -67,4 +92,38 @@ float ANotDoomPlayerState::GetCurrentAmmo(int index)
 void ANotDoomPlayerState::SetCurrentAmmo(int index, float newValue)
 {
     WeaponAmmoArray[index] = newValue;
+}
+
+float ANotDoomPlayerState::GetMaxAmmo(int index)
+{
+    return WeaponMaxAmmoArray[index];
+}
+
+void ANotDoomPlayerState::SetMaxAmmo(int index, float newValue)
+{
+    WeaponMaxAmmoArray[index] = newValue;
+}
+
+void ANotDoomPlayerState::NextWeapon()
+{
+    if (CurrentWeapon >= 4)
+    {
+        CurrentWeapon = 0;
+    }
+    else
+    {
+        CurrentWeapon++;
+    }
+}
+
+void ANotDoomPlayerState::PrevWeapon()
+{
+    if (CurrentWeapon <= 0)
+    {
+        CurrentWeapon = 4;
+    }
+    else
+    {
+        CurrentWeapon--;
+    }
 }
